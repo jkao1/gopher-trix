@@ -48,7 +48,7 @@ func DrawLine(screen [][][]int, x0, y0, x1, y1 int) {
 	slope := A / (-1.0 * B)
 	var d int
 
-	if slope >= 0 && slope <= 1 {
+	if slope >= 0 && slope <= 1 { // octant 1
 		d = 2*A + B
 		for x <= x1 && y <= y1 {
 			plot(screen, x, y)
@@ -61,42 +61,45 @@ func DrawLine(screen [][][]int, x0, y0, x1, y1 int) {
 		}
 	}
 
-	if slope > 1 {
+	if slope > 1 { // octant 2
 		d = A + 2*B
-		
+		for x <= x1 && y <= y1 {
+			plot(screen, x, y)
+			if d < 0 {
+				x++
+				d += 2*A
+			}
+			y++
+			d += 2*B
+		}
 	}
-/*
-    if slope > 1: # octant 2
-        d = A + 2*B
-        while x <= x1 and y <= y1:
-            plot(screen, x, y)
-            if d < 0:
-                x += 1
-                d += 2*A
-            y += 1
-            d += 2*B
 
-    if slope < 0 and slope >= -1: # octant 8
-        d = 2*A - B
-        while x <= x1 and y >= y1:
-            plot(screen, x, y)
-            if d < 0:
-                y -= 1
-                d -= 2*B
-            x += 1
-            d += 2*A
+	if slope < 0 && slope >= -1 { // octant 8
+		d = 2*A - B
+    for x <= x1 && y >= y1 {
+			plot(screen, x, y)
+			if d < 0 {
+				y--
+				d -= 2*B
+			}
+			x++
+			d += 2*A
+		}
+	}
 
-    if slope < -1: # octant 7
-        d = A - 2*B
-        while x <= x1 and y >= y1:
-            plot(screen, x, y)
-            if d > 0:
-                x += 1
-                d += 2*A
-            y -= 1
-            d -= 2*B*/
+	if slope < -1 { // octant 7
+		d = A - 2*B
+		for x <= x1 && y >= y1 {
+			plot(screen, x, y)
+			if d > 0 {
+				x++
+				d += 2*A
+			}
+			y--
+			d -= 2*B
+		}
+	}
 }
-
 
 func plot(screen [][][]int, x, y int) {
 	if x >= 0 && x < XRES && y >= 0 && y < YRES {
