@@ -49,6 +49,8 @@ func drawGopher() {
 
 	AddEdge(matrix, 142, 82, 0, 162, 70, 0)
 
+	// Yes, I had to build a HTML5 Canvas with an image of the Go Gopher drawn onto it
+	// and use a bit of JS to determine these points.
 	AddPoint(matrix, 189, 52, 0)
 	AddPoint(matrix, 206, 39, 0)
 	AddPoint(matrix, 230, 33, 0)
