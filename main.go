@@ -8,10 +8,9 @@ import (
 
 func main() {
 	screen := NewScreen()
+	defer WriteScreenToPPM(screen)
 
 	DrawLine(screen, 0, 0, XRES - 1, YRES - 1)
-
-	WriteScreenToPPM(screen)
 }
 
 func WriteScreenToPPM(screen [][][]int) {
