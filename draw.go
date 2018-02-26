@@ -16,10 +16,10 @@ func DrawLines(matrix [][]int, screen [][][]int) {
 }
 
 func AddPoint(matrix [][]int, x, y, z int) {
-	append(matrix[0], x)
-	append(matrix[1], y)
-	append(matrix[2], z)
-	append(matrix[3], 1)
+	matrix[0] = append(matrix[0], x)
+	matrix[1] = append(matrix[1], y)
+	matrix[2] = append(matrix[2], z)
+	matrix[3] = append(matrix[3], 1)
 }
 
 func AddEdge(matrix [][]int, x0, y0, z0, x1, y1, z1 int) {
