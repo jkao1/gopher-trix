@@ -1,22 +1,23 @@
 package main
 
+import (
+	"bytes"
+	"fmt"
+	"os"
+)
+
 func main() {
 	screen := NewScreen()
+	defer WriteScreenToPPM(screen)
+
 	m := [][]int{
-		{1, 2, 3},
-		{1, 2, 3},
+		{10, 200, 300},
+		{10, 10, 30},
 		{1, 2, 3},
 		{1, 1, 1},
 	}
 
 	DrawLines(m, screen)
-}
-
-/*
-func main() {
-	screen := NewScreen()
-	defer WriteScreenToPPM(screen)
-
 }
 
 func WriteScreenToPPM(screen [][][]int) {
@@ -39,4 +40,3 @@ func WriteScreenToPPM(screen [][][]int) {
 
 	file.WriteString(buffer.String())
 }
-*/
