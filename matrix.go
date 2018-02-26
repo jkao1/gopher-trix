@@ -11,7 +11,7 @@ func MakeIdentity(matrix [][]int) {
 			if i == j {
 				matrix[i][j] = 1
 			} else {
-				matrix[i][i] = 0
+				matrix[i][j] = 0
 			}
 		}
 	}
