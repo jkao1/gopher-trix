@@ -1,6 +1,6 @@
 package main
 
-var DEFAULT_DRAW_COLOR []int = []int{255, 0, 0}
+var DEFAULT_DRAW_COLOR []int = []int{255, 255, 255}
 
 func DrawLines(matrix [][]int, screen [][][]int) {
 	for i := 0; i < len(matrix[0]) - 1; i++ {
@@ -30,6 +30,7 @@ func AddEdge(matrix [][]int, x0, y0, z0, x1, y1, z1 int) {
 func DrawLine(screen [][][]int, x0, y0, x1, y1 int) {
 	if x1 < x0 {
 		x0, x1 = x1, x0
+		y0, y1 = y1, y0
 	}
 
 	A := y1 - y0
@@ -51,7 +52,7 @@ func DrawLine(screen [][][]int, x0, y0, x1, y1 int) {
 		return
 	}
 
-	slope := A / (-1.0 * B)
+	slope := float64(A) / float64(-B)
 	var d int
 
 	if slope >= 0 && slope <= 1 { // octant 1
